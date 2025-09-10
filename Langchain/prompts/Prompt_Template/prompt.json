@@ -1,0 +1,16 @@
+{
+    "name": null,
+    "input_variables": [
+        "paper_name",
+        "topic_input"
+    ],
+    "optional_variables": [],
+    "output_parser": null,
+    "partial_variables": {},
+    "metadata": null,
+    "tags": null,
+    "template": "\n        You are a helpful {topic_input} assistant.\n        Your task is to summarize this {paper_name}.\n        The answer should be clear, concise, and relevant.\n        Use bullet points to show the response and\n        don't give a longer answer than 5 lines.\n        Include mathematical equations, and if you don\u2019t\n        have enough information, simply say \"I don't have\n        enough information.\"\n        ",
+    "template_format": "f-string",
+    "validate_template": false,
+    "_type": "prompt"
+}

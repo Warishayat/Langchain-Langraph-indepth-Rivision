@@ -1,0 +1,13 @@
+#in this lecture i will decide what are prompts and we use them
+# what are the types of prompts eacha dn everything about the prompts
+
+
+# till now we are using prompts but we gave the name of 
+# 1: text base prompts like model.invoke("hello im waris") --->this is text based prompt.
+
+
+# Static and dynamic prompts
+
+# let take a example of research assistant tool like
+# user coome gave their input and enter then research assistant
+# will genrate the brief summary of researh paper.
