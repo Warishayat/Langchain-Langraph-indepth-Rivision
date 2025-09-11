@@ -48,6 +48,8 @@ class Product_review(TypedDict):
 
 s_model = model.with_structured_output(Product_review)
 result = s_model.invoke(review)
+print()
+print("typeDict  structured response")
 print(result["sentiment"])
 print(result.keys())
 
@@ -60,13 +62,10 @@ class StudentName(BaseModel):
     age:Optional[int] = 12
     cgpa:float = Field(gt=1 ,lt=10,default=6.5,description="Its represnting cgpa of the student")
 
-student = StudentName(name="ali khan",cgpa=6.5) 
-print("the name of student")
-student_dict = dict(student)
-print(student_dict)
-
-
-
+# student = StudentName(name="ali khan",cgpa=6.5) 
+# print("the name of student")
+# student_dict = dict(student)
+# print(student_dict)
 
 class Product_Review01(BaseModel):
     key_theme : list[str] = Field(description="this is the list of fields")
@@ -78,5 +77,60 @@ class Product_Review01(BaseModel):
 
 s2_model = model.with_structured_output(Product_Review01)
 res=s2_model.invoke(review)
+print()
+print("Pydantic BaseModel structured response")
 res_dict = dict(res)
 print(res_dict)
+
+
+
+# Third type of input
+#json_schema
+json_schema = {
+  "title": "Product_Review01",
+  "type": "object",
+  "properties": {
+    "key_theme": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "this is the list of fields"
+    },
+    "summary": {
+      "type": "string",
+      "description": "A Short summary of the priduct"
+    },
+    "props": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of pros if aviablable there"
+    },
+    "cons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of cons if aviablable there"
+    },
+    "sentiment": {
+      "type": "string",
+      "enum": ["pos", "neg"],
+      "description": "Sentiment of the review"
+    }
+  },
+  "required": [
+    "key_theme",
+    "summary",
+    "sentiment"
+  ]
+}
+
+
+s3_model = model.with_structured_output(json_schema)
+result = s3_model.invoke(review)
+print()
+print("json schema structured response")
+print(result)
