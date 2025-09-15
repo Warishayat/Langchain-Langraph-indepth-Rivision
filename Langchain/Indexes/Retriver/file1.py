@@ -56,6 +56,3 @@ response=search.invoke("file structure?")
 print("Retriver")
 print("Answer is:")
 print(response)
-
-
-#lets make some advance search.

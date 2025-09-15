@@ -1,25 +1,28 @@
-import os
-from dotenv import load_dotenv
+
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_experimental.text_splitter import SemanticChunker
 from langchain_huggingface import HuggingFaceEmbeddings
+from dotenv import load_dotenv
+import os
 
-# these text splitter are experimental
+#it is kind of exoerimenting
 
-
-# Load environment variables
 load_dotenv()
 
 HUGGINGFACEHUB_ACCESS_TOKEN = os.getenv("HUGGINGFACEHUB_ACCESS_TOKEN")
 
-# Embedding model
-embedding_mod = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+embedding_mod = HuggingFaceEmbeddings(model="sentence-transformers/all-MiniLM-L6-v2")
 
-# Semantic Chunker
 text_splitter = SemanticChunker(
-    embedding_mod,
-    breakpoint_type="standard_deviation",
+    embedding_mod,breakpoint_type="standard_deviation",
     breakpoint_threshold_amount=1
 )
 
+
 print("all GOOD")
+
+
+#sematic meaning based --->in which we are not deciding the based on text
+# or words weather we split based on semantic meaning
+# they are using sliding widow approach where the similarity is less between
+# the sentense mean there are some diffrent sentenses

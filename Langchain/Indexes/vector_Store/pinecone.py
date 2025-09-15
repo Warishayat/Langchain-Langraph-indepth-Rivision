@@ -29,7 +29,6 @@ if index_name not in pinecone.list_indexes().names():
 loader = PyPDFLoader("purposal.pdf")
 docs = loader.load()
 
-
 splitter = RecursiveCharacterTextSplitter(chunk_size=300, chunk_overlap=30)
 docs = splitter.split_documents(docs)
 
