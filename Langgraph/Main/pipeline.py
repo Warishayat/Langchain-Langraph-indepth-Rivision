@@ -36,13 +36,16 @@ graph.add_edge('chatbot',END)
 
 workflow = graph.compile(checkpointer=checkpointer)
 
-# initial_state = {'messages':[HumanMessage(content="how to apply german study visa and which universistat are best for llm reserach?")]}
+initial_state = {'messages':[HumanMessage(content="how to apply german study visa and which universistat are best for llm reserach?")]}
 
-# thread_id = '1'
+thread_id = '1'
+config = {"configurable": {"thread_id": thread_id}}
+response=workflow.invoke({'messages':[HumanMessage(content="hello how are you?")]},config=config)
+print(workflow.get_state(config=config).values['messages'])
 # while True:
 #     message = input("User: ")
 #     print("User:",message)
-#     config = {"configurable": {"thread_id": thread_id}}
+
 #     if message.strip().lower() in ['exit','quit','bye']:
 #         break
     
